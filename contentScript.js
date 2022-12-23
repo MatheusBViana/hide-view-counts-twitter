@@ -13,8 +13,9 @@ function selectDivs(xpath, parent){
 }
 
 setInterval(() => {
-    // Select all elements that are links that sends to twitter analytics
-	let elementsPathQuery = "//a[contains(@href, 'analytics')]/.."
+    // Select the path of all elements that are links that sends to twitter analytics
+    let elementsPathQuery = "//a[contains(@href, 'analytics')]/.."
+    
     let usernamePath = "//*/div/div/div[2]/header/div/div/div/div[2]/div/div/div[2]/div/div[2]/div/div/div/span"
     let statsPath = "//*/div/div/div[2]/main/div/div/div/div[1]/div/section/div/div/div[1]/div/div/div[1]/article/div/div/div/div[3]/div[6]/div"
     let stats = selectDivs(statsPath)[0]
@@ -32,18 +33,15 @@ setInterval(() => {
     
    
     // Return all elements that match the xpath and remove them
-	let elementsToBeRemoved = selectDivs(elementsPathQuery);
+    let elementsToBeRemoved = selectDivs(elementsPathQuery);
     for(let j = 0; j < elementsToBeRemoved.length; j++){
-        if(elementsToBeRemoved[j].parentNode.parentNode.parentNode.role != "menu"){
-            elementsToBeRemoved[j].remove()
-        }
-        
+	if(elementsToBeRemoved[j].parentNode.parentNode.parentNode.role != "menu"){
+	    elementsToBeRemoved[j].remove()
+	}  
     }
+	
     if(window.location.href.includes(usernameText)){
         stats.firstChild.setAttribute("style", "margin-right: 0");
     }   
-
-    
-    
 }, 80)
 

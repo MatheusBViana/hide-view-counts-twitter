@@ -1,0 +1,24 @@
+{
+    "author": "Matheus Bermudes Viana",
+    "manifest_version": 3,
+    "version": "1.0",
+    "short_name": "HTV",
+    "name": "Hide Twitter Views",
+    "description": "Extension to hide tweets's views on the timeline",
+    "permissions": [
+    ],
+    "icons": {
+        "128": "icon128.png"
+      },
+    "host_permissions": [
+      "<all_urls>"
+    ],
+    "content_scripts":[
+      {
+        "js":["contentScript.js"],
+        "matches": ["https://twitter.com/*"],
+        "run_at":"document_end"
+      }
+    ]
+  
+  }
